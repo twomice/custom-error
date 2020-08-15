@@ -9,16 +9,6 @@
         <meta name="viewport" content="width=device-width,user-scalable=1">
     </head>
     <body>
-        <!-- Get IP Address using PHP 
-        <?php
-            if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-                $ip = $_SERVER['HTTP_CLIENT_IP'];
-            } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-                $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-            } else {
-                $ip = $_SERVER['REMOTE_ADDR'];
-            }
-        ?>-->
         <div class="main-content">
             <div class="mc-container">
                 <h1>Oops! An error occurred</h1>
@@ -27,7 +17,7 @@
                 <p>If this error persists, please copy the entire text of this page into an email and let us know what you were doing when the error occurred. We will fix it as soon as possible.</p>
                 <p><b>URL of this page</b>: <span id="js-url"></span><br />
                 <b>Timestamp</b>: <span id="js-date"></span></b><br />
-                <b>IP address</b>: <span id="js-ip"><!--?php echo $ip; ?--></span></p>
+                <b>IP address</b>: <span id="js-ip"></span></p>
             </div>
         </div>
     </body>
