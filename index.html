@@ -78,12 +78,13 @@
 
           // Get User IP Address using Javascript
           var request = new XMLHttpRequest();
-          request.open('GET', 'https://ipapi.co/json/', true);
+          request.open('GET', '/custom-error/php/get_ip.php', true);
           request.onload = function() {
             if (request.status >= 200 && request.status < 400) {
               // Success!
               var data = JSON.parse(request.responseText);
               $ip.innerHTML = data['ip'];
+              console.log(request);
             } else {
               alert('There is some error on the url server');
             }
