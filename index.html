@@ -17,7 +17,7 @@
                 <p>If this error persists, please copy the entire text of this page into an email and let us know what you were doing when the error occurred. We will fix it as soon as possible.</p>
                 <p><b>URL of this page</b>: <span id="js-url"></span><br />
                 <b>Timestamp</b>: <span id="js-date"></span></b><br />
-                <b>IP address</b>: <span id="js-ip"></span></p>
+                <b>IP address</b>: <span id="js-ip">Unknown</span></p>
             </div>
         </div>
     </body>
@@ -26,6 +26,7 @@
             font-size: 16px;
             color: #252525;
             margin: 0;
+            font-family: 'Verdana';
         }
 
         * {
@@ -84,13 +85,7 @@
               // Success!
               var data = JSON.parse(request.responseText);
               $ip.innerHTML = data['ip'];
-            } else {
-              alert('There is some error on the url server');
             }
-          };
-
-          request.onerror = function() {
-            alert('There is a connection error');
           };
 
           request.send();
