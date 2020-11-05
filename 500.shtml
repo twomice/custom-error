@@ -12,8 +12,8 @@
         <div class="main-content">
             <div class="mc-container">
                 <h1>Oops. An error occurred</h1>
-                <h2>The server returned an "500 Internal Server Error".</h2>
-                <p>Something is broken. We are sorry for the inconvenience. You can try again at any time.</p>
+                <h2>The server says: "500 Internal Server Error".</h2>
+                <p>Something is broken. We are sorry for the inconvenience.</p>
                 <p>If this error persists, please copy the entire text of this page into an email and let us know what you were doing when the error occurred. We will fix it as soon as possible.</p>
                 <p><b>URL of this page</b>: <span id="js-url"><!--#echo var="REQUEST_SCHEME"-->://<!--#echo var="HTTP_HOST"--><!--#echo var="REQUEST_URI"--></span><br />
                 <b>Timestamp</b>: <span id="js-date"><!--#echo var="DATE_LOCAL" --></span></b><br />
