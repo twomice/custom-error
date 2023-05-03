@@ -1,0 +1,82 @@
+<!Doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>500 Internal Server Error</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="viewport" content="width=device-width,user-scalable=1">
+    </head>
+    <body>
+        <div class="main-content">
+            <div class="mc-container">
+                <h1>Oops. An error occurred</h1>
+                <h2>The server says:
+                <!--#if expr='v("REDIRECT_STATUS") = "500"' -->500 Internal Server Error
+                <!--#elif expr='v("REDIRECT_STATUS") = "501"' -->501 Not Implemented
+                <!--#elif expr='v("REDIRECT_STATUS") = "502"' -->502 Bad Gateway
+                <!--#elif expr='v("REDIRECT_STATUS") = "503"' -->503 Service Unavailable
+                <!--#elif expr='v("REDIRECT_STATUS") = "504"' -->504 Gateway Timeout
+                <!--#elif expr='v("REDIRECT_STATUS") = "505"' -->505 HTTP Version Not Supported
+                <!--#elif expr='v("REDIRECT_STATUS") = "506"' -->506 Variant Also Negotiates (Experimental)
+                <!--#elif expr='v("REDIRECT_STATUS") = "507"' -->507 Insufficient Storage
+                <!--#elif expr='v("REDIRECT_STATUS") = "508"' -->508 Loop Detected
+                <!--#elif expr='v("REDIRECT_STATUS") = "509"' -->509 Unassigned
+                <!--#elif expr='v("REDIRECT_STATUS") = "510"' -->510 Not Extended
+                <!--#elif expr='v("REDIRECT_STATUS") = "511"' -->511 Network Authentication Required
+                <!--#else--><!--#echo var="REDIRECT_STATUS"--> Undetermined Error Type
+                <!--#endif -->                  
+                </h2>
+                <p>Something is broken. We are sorry for the inconvenience.</p>
+                <p>If this error persists, please copy the entire text of this page into an email and let us know what you were doing when the error occurred. We will fix it as soon as possible.</p>
+                <p><b>URL of this page</b>: <span id="js-url"><!--#echo var="REQUEST_SCHEME"-->://<!--#echo var="HTTP_HOST"--><!--#echo var="REQUEST_URI"--></span><br />
+                <b>Timestamp</b>: <span id="js-date"><!--#echo var="DATE_LOCAL" --></span></b><br />
+                <b>IP address</b>: <span id="js-ip"><!--#echo var="REMOTE_ADDR" --></span></p>
+            </div>
+        </div>
+    </body>
+    <style>
+        body {
+            font-size: 16px;
+            color: #252525;
+            margin: 0;
+            font-family: 'Verdana';
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: bold;
+            margin: 0;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        h1 {
+            color: #E44542;
+        }
+
+        p, ul, ol {
+            margin: 0 0 30px;
+        }
+
+        p {
+            line-height: 1.8;
+        }
+
+        .main-content {
+            padding: 40px 0;
+        }
+
+        .mc-container {
+            padding: 0 30px;
+        }
+
+        .main-content span {
+            color: #E44542;
+        }
+    </style>
+</html>
