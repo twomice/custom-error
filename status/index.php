@@ -1,14 +1,23 @@
 <?php
 
-$configFile = __DIR__ . 'config.php';
-require $configFile;
-  
+$configFile = __DIR__ . '/config.php';
+$configBaseName = basename($configFile);
+if(
+  file_exists(stream_resolve_include_path($configFile))
+  && is_readable($configFile)
+){
+  include $configFile;
+}
+else {
+  die('Config file '. $configBaseName .' not found or unreadable.');
+}
+
 if (
   empty($servername)
   || empty($username)
   || empty($password)
 ) {
-  die('Configuration incomplete. Please check status.config.php');
+  die('Configuration incomplete. Please check ' . $configBaseName);
 }
 
 $dbStatus = "";
@@ -47,9 +56,4 @@ fclose($fp);
 
 
 $statusMessage = "dbStatus:$dbStatus; fileStatus:$fileStatus";
-echo $statusMessage; 
-
-$logMessage = date('c') . ": ". $statusMessage . " :: dbError: $dbError\n";
-$fp = fopen('/tmp/status.php.log', 'a');
-fwrite($fp, $logMessage); 
-fclose($fp);
+echo $statusMessage;
