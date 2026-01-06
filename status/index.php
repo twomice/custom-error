@@ -1,5 +1,11 @@
 <?php
 
+// Bitwise error-state flags:
+// NOTE: This script MAY NOT report an error code of "1"; it is reserved
+// for other processes (namely bash scripts which may process this output).
+define('HEALTH_STATUS_PROBLEM_FILE', 2);
+define('HEALTH_STATUS_PROBLEM_DB', 4);
+
 $configFile = __DIR__ . '/config.php';
 $configBaseName = basename($configFile);
 if(
@@ -22,6 +28,7 @@ if (
 
 $dbStatus = "";
 $fileStatus = "";
+$statusCode = 0;
 
 // Test dbStatus:
 // Create connection
@@ -31,6 +38,7 @@ $dbError = '';
 if ($conn->connect_error) {
   $dbStatus = 'FAIL';
   $dbError = $conn->connect_error;
+  $statusCode += HEALTH_STATUS_PROBLEM_DB;
 }
 else {
   $dbStatus = 'SUCCESS';
@@ -49,11 +57,16 @@ if ($fileContents == $uniq) {
 }
 else {
   $fileStatus = "FAIL";
+  $statusCode += HEALTH_STATUS_PROBLEM_FILE;
 }
 $fp = fopen($testFile, 'w');
 fputs($fp, 'This file is used by Joinery for system testing. Do not delete this file.');
 fclose($fp);
 
-
-$statusMessage = "dbStatus:$dbStatus; fileStatus:$fileStatus";
-echo $statusMessage;
+if ($_GET['format'] == 'code') {
+  echo "$statusCode";
+}
+else {
+  $statusMessage = "dbStatus:$dbStatus; fileStatus:$fileStatus";
+  echo $statusMessage;
+}
