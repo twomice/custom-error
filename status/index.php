@@ -46,7 +46,7 @@ else {
 
 // Test fileStatus
 $docroot = $_SERVER["DOCUMENT_ROOT"];
-$testFile = "$docroot/JOINERY_DO_NOT_DELETE.txt";
+$testFile = "$docroot/.joinery-health-" . getmypid();
 $uniq = uniqid();
 $fp = fopen($testFile, 'w');
 fputs($fp, $uniq);
@@ -59,9 +59,7 @@ else {
   $fileStatus = "FAIL";
   $statusCode += HEALTH_STATUS_PROBLEM_FILE;
 }
-$fp = fopen($testFile, 'w');
-fputs($fp, 'This file is used by Joinery for system testing. Do not delete this file.');
-fclose($fp);
+unlink($testFile);
 
 if ($_GET['format'] == 'code') {
   echo "$statusCode";
